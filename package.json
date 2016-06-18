@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dist": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +15,8 @@
     "babel-preset-react": "^6.5.0",
     "react": "^15.1.0",
     "webpack": "^1.13.1"
+  },
+  "peerDependencies": {
+    "react": "^15.1.0"
   }
 }
