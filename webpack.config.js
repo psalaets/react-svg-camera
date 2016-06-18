@@ -1,3 +1,6 @@
+// This is the webpack config for bundling.
+// See webpack.test-config.js for the webpack config for tests.
+
 module.exports = {
   entry: './src/svg-camera.js',
   output: {

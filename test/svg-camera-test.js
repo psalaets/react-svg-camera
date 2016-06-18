@@ -7,6 +7,10 @@ var SvgCamera = require('../src/svg-camera');
 var container, styles;
 
 function setUp() {
+  if (document.body.childNodes.length > 0) {
+    throw new Error('document.body has child nodes, was tearDown() forgotten?');
+  }
+
   container = document.createElement('div');
   container.id = 'container';
 
@@ -18,6 +22,10 @@ function setUp() {
 }
 
 function tearDown() {
+  if (document.body.childNodes.length == 0) {
+    throw new Error('document.body has no child nodes, was setUp() forgotten?');
+  }
+
   document.body.removeChild(container);
   document.body.removeChild(styles);
 
