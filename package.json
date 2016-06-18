@@ -1,15 +1,20 @@
 {
   "name": "react-svg-camera",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "React component to zoom and scroll an svg element",
+  "main": "dist/svg-camera.js",
   "scripts": {
     "dist": "webpack",
     "test": "karma start"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["react", "svg", "zoom", "scroll", "react-component"],
+  "author": "Paul Salaets <psalaets@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/psalaets/react-svg-camera",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psalaets/react-svg-camera.git"
+  },
   "devDependencies": {
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
