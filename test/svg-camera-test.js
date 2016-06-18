@@ -4,25 +4,6 @@ var ReactDOM = require('react-dom');
 
 var SvgCamera = require('../src/svg-camera');
 
-function setUp() {
-  var container = document.createElement('div');
-  container.id = 'container';
-
-  var styles = document.createElement('style');
-  styles.innerHTML = '#container {width: 200px; height: 100px;}\nsvg {width: 100%;height: 100%;}';
-
-  document.body.appendChild(styles);
-  document.body.appendChild(container);
-
-  return container;
-}
-
-function tearDown() {
-  while (document.body.firstChild) {
-    document.body.removeChild(document.body.firstChild);
-  }
-}
-
 test('renders its children', function(t) {
   t.plan(2);
   var container = setUp();
@@ -186,6 +167,25 @@ test('after first render', function(t) {
     tearDown();
   });
 });
+
+function setUp() {
+  var container = document.createElement('div');
+  container.id = 'container';
+
+  var styles = document.createElement('style');
+  styles.innerHTML = '#container {width: 200px; height: 100px;}\nsvg {width: 100%;height: 100%;}';
+
+  document.body.appendChild(styles);
+  document.body.appendChild(container);
+
+  return container;
+}
+
+function tearDown() {
+  while (document.body.firstChild) {
+    document.body.removeChild(document.body.firstChild);
+  }
+}
 
 function defaultProps() {
   return {
