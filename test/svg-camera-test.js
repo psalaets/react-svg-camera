@@ -25,6 +25,41 @@ test('renders its children', function(t) {
   tearDown();
 });
 
+test('becomes an <svg>', function(t) {
+  var container = setUp();
+  t.plan(1);
+
+  var props = defaultProps();
+
+  var componentInstance = ReactDOM.render(<SvgCamera {...props}/>, container);
+
+  var domNode = ReactDOM.findDOMNode(componentInstance);
+
+  t.equal(domNode.tagName, 'svg');
+
+  tearDown();
+});
+
+test('passes props along to its <svg>', function(t) {
+  var container = setUp();
+  t.plan(3);
+
+  var props = defaultProps();
+  props.width = 200;
+  props.height = 100;
+  props.className = 'blah';
+
+  var componentInstance = ReactDOM.render(<SvgCamera {...props}/>, container);
+
+  var domNode = ReactDOM.findDOMNode(componentInstance);
+
+  t.equal(domNode.getAttribute('width'), '200');
+  t.equal(domNode.getAttribute('height'), '100');
+  t.ok(domNode.classList.contains('blah'));
+
+  tearDown();
+});
+
 test('on first render', function(t) {
   t.test('is hidden', function(st) {
     var container = setUp();
