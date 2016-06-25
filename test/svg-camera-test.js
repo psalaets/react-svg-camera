@@ -5,8 +5,8 @@ var ReactDOM = require('react-dom');
 var SvgCamera = require('../src/svg-camera');
 
 test('renders its children', function(t) {
-  t.plan(2);
   var container = setUp();
+  t.plan(2);
 
   var props = defaultProps();
   var componentInstance = ReactDOM.render(
@@ -27,8 +27,8 @@ test('renders its children', function(t) {
 
 test('on first render', function(t) {
   t.test('is hidden', function(st) {
-    st.plan(1);
     var container = setUp();
+    st.plan(1);
 
     var props = defaultProps();
     var componentInstance = ReactDOM.render(<SvgCamera {...props}/>, container);
@@ -41,8 +41,8 @@ test('on first render', function(t) {
   });
 
   t.test('does not set viewBox', function(st) {
-    st.plan(1);
     var container = setUp();
+    st.plan(1);
 
     var props = defaultProps();
     var componentInstance = ReactDOM.render(<SvgCamera {...props}/>, container);
@@ -57,8 +57,8 @@ test('on first render', function(t) {
 
 test('after first render', function(t) {
   t.test('is not hidden', function(st) {
-    st.plan(1);
     var container = setUp();
+    st.plan(1);
 
     var props = defaultProps();
 
@@ -73,8 +73,8 @@ test('after first render', function(t) {
   });
 
   t.test('can set viewBox for default camera', function(st) {
-    st.plan(1);
     var container = setUp();
+    st.plan(1);
 
     var props = defaultProps();
     props.camera.x = 0;
@@ -92,8 +92,8 @@ test('after first render', function(t) {
   });
 
   t.test('can set viewBox for zoomed in camera', function(st) {
-    st.plan(1);
     var container = setUp();
+    st.plan(1);
 
     var props = defaultProps();
     props.camera.x = 0;
@@ -111,8 +111,8 @@ test('after first render', function(t) {
   });
 
   t.test('can set viewBox for zoomed out camera', function(st) {
-    st.plan(1);
     var container = setUp();
+    st.plan(1);
 
     var props = defaultProps();
     props.camera.x = 0;
@@ -130,8 +130,8 @@ test('after first render', function(t) {
   });
 
   t.test('can set viewBox for scrolled camera', function(st) {
-    st.plan(1);
     var container = setUp();
+    st.plan(1);
 
     var props = defaultProps();
     props.camera.x = 100;
@@ -149,8 +149,8 @@ test('after first render', function(t) {
   });
 
   t.test('can set viewBox for zoomed and scrolled camera', function(st) {
-    st.plan(1);
     var container = setUp();
+    st.plan(1);
 
     var props = defaultProps();
     props.camera.x = 100;
