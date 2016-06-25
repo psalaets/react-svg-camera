@@ -22,16 +22,16 @@ var SvgCamera = React.createClass({
   cacheSize: function cacheSize(svgElement) {
     if (svgElement) {
       var rect = svgElement.getBoundingClientRect();
-      this._size = {
+      this.setSize({
         width: rect.width,
         height: rect.height
-      };
+      });
     } else {
-      this._size = null;
+      this.setSize(null);
     }
   },
   generateStyle: function generateStyle() {
-    if (this._size) {
+    if (this.knowsSize()) {
       return null;
     } else {
       return {
@@ -39,13 +39,21 @@ var SvgCamera = React.createClass({
       };
     }
   },
+  knowsSize: function knowsSize() {
+    return !!this._size;
+  },
+  getSize: function getSize() {
+    return this._size;
+  },
+  setSize: function setSize(size) {
+    this._size = size;
+  },
   generateViewBox: function generateViewBox(props) {
-    var size = this._size;
-
-    if (!size) {
+    if (!this.knowsSize()) {
       return null;
     }
 
+    var size = this.getSize();
     var width = size.width;
     var height = size.height;
     var camera = props.camera;
@@ -60,8 +68,6 @@ var SvgCamera = React.createClass({
 
     var viewBoxX = cameraX - ((viewBoxWidth - width) / 2);
     var viewBoxY = cameraY - ((viewBoxHeight - height) / 2);
-
-
 
     return viewBoxX + ' ' + viewBoxY + ' ' + viewBoxWidth + ' ' + viewBoxHeight;
   }
