@@ -2,6 +2,8 @@
 
 React component to zoom and scroll an svg element.
 
+Change a camera object to manipulate the svg's `viewBox`.
+
 ## Install
 
 `npm install react-svg-camera --save`
