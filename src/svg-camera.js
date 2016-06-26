@@ -20,12 +20,18 @@ var SvgCamera = React.createClass({
       zoom: zoomIsNumberGreaterThanZero
     })
   },
+  componentWillMount: function componentWillMount() {
+    if (!this.knowsSize()) {
+      // trigger a render in addition to the initial render so svg's size will
+      // be known
+      this.forceUpdate();
+    }
+  },
   render: function render() {
     var viewbox = this.generateViewBox(this.props);
-    var style = this.generateStyle();
 
     return (
-      <svg {...this.props} viewBox={viewbox} style={style} ref={this.cacheSize}>
+      <svg {...this.props} viewBox={viewbox} ref={this.cacheSize}>
         {this.props.children}
       </svg>
     );
@@ -39,15 +45,6 @@ var SvgCamera = React.createClass({
       });
     } else {
       this.setSize(null);
-    }
-  },
-  generateStyle: function generateStyle() {
-    if (this.knowsSize()) {
-      return null;
-    } else {
-      return {
-        visibility: 'hidden'
-      };
     }
   },
   knowsSize: function knowsSize() {

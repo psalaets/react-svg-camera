@@ -49,52 +49,65 @@ module.exports =
 
 	var React = __webpack_require__(1);
 
+	function zoomIsNumberGreaterThanZero(props, propName, componentName) {
+	  var value = props[propName];
+
+	  if (typeof value != 'number' || value <= 0) {
+	    return new Error('Invalid prop `camera.zoom` supplied to `' + componentName + '`, expected `number greater than 0` but was `' + value + '`');
+	  }
+	}
+
 	var SvgCamera = React.createClass({
 	  displayName: 'SvgCamera',
 	  propTypes: {
 	    camera: React.PropTypes.shape({
 	      x: React.PropTypes.number.isRequired,
 	      y: React.PropTypes.number.isRequired,
-	      zoom: React.PropTypes.number.isRequired
+	      zoom: zoomIsNumberGreaterThanZero
 	    })
+	  },
+	  componentWillMount: function componentWillMount() {
+	    if (!this.knowsSize()) {
+	      // trigger a render in addition to the initial render so svg's size will
+	      // be known
+	      this.forceUpdate();
+	    }
 	  },
 	  render: function render() {
 	    var viewbox = this.generateViewBox(this.props);
-	    var style = this.generateStyle();
 
 	    return React.createElement(
 	      'svg',
-	      _extends({}, this.props, { viewBox: viewbox, style: style, ref: this.cacheSize }),
+	      _extends({}, this.props, { viewBox: viewbox, ref: this.cacheSize }),
 	      this.props.children
 	    );
 	  },
 	  cacheSize: function cacheSize(svgElement) {
 	    if (svgElement) {
 	      var rect = svgElement.getBoundingClientRect();
-	      this._size = {
+	      this.setSize({
 	        width: rect.width,
 	        height: rect.height
-	      };
+	      });
 	    } else {
-	      this._size = null;
+	      this.setSize(null);
 	    }
 	  },
-	  generateStyle: function generateStyle() {
-	    if (this._size) {
-	      return null;
-	    } else {
-	      return {
-	        visibility: 'hidden'
-	      };
-	    }
+	  knowsSize: function knowsSize() {
+	    return !!this._size;
+	  },
+	  getSize: function getSize() {
+	    return this._size;
+	  },
+	  setSize: function setSize(size) {
+	    this._size = size;
 	  },
 	  generateViewBox: function generateViewBox(props) {
-	    var size = this._size;
-
-	    if (!size) {
+	    if (!this.knowsSize()) {
 	      return null;
 	    }
 
+	    var size = this.getSize();
 	    var width = size.width;
 	    var height = size.height;
 	    var camera = props.camera;

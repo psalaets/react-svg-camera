@@ -49,4 +49,3 @@ function render() {
 }
 
 render();
-render();

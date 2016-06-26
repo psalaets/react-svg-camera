@@ -97,7 +97,6 @@
 	}
 
 	render();
-	render();
 
 /***/ },
 /* 1 */
@@ -20417,13 +20416,19 @@
 	      zoom: zoomIsNumberGreaterThanZero
 	    })
 	  },
+	  componentWillMount: function componentWillMount() {
+	    if (!this.knowsSize()) {
+	      // trigger a render in addition to the initial render so svg's size will
+	      // be known
+	      this.forceUpdate();
+	    }
+	  },
 	  render: function render() {
 	    var viewbox = this.generateViewBox(this.props);
-	    var style = this.generateStyle();
 
 	    return React.createElement(
 	      'svg',
-	      _extends({}, this.props, { viewBox: viewbox, style: style, ref: this.cacheSize }),
+	      _extends({}, this.props, { viewBox: viewbox, ref: this.cacheSize }),
 	      this.props.children
 	    );
 	  },
@@ -20436,15 +20441,6 @@
 	      });
 	    } else {
 	      this.setSize(null);
-	    }
-	  },
-	  generateStyle: function generateStyle() {
-	    if (this.knowsSize()) {
-	      return null;
-	    } else {
-	      return {
-	        visibility: 'hidden'
-	      };
 	    }
 	  },
 	  knowsSize: function knowsSize() {
