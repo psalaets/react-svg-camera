@@ -7,7 +7,7 @@
     "dist": "webpack",
     "test": "karma start"
   },
-  "keywords": ["react", "svg", "zoom", "scroll", "react-component"],
+  "keywords": ["react", "svg", "zoom", "scroll", "react-component", "viewbox"],
   "author": "Paul Salaets <psalaets@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/psalaets/react-svg-camera",
