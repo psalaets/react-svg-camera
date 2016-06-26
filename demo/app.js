@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var SvgCamera = require('../dist/svg-camera');
+var SvgCamera = require('../src/svg-camera');
 var main = document.getElementById('main');
 
 var camera = {
