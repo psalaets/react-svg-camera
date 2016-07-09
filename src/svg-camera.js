@@ -1,17 +1,6 @@
 var React = require('react');
 
-function zoomIsNumberGreaterThanZero(props, propName, componentName) {
-  var value = props[propName];
-
-  if (typeof value != 'number' || value <= 0) {
-    return new Error(
-      'Invalid prop `camera.zoom` supplied to `' + componentName +
-      '`, expected `number greater than 0` but was `' + value + '`'
-    );
-  }
-}
-
-var SvgCamera = React.createClass({
+module.exports = React.createClass({
   displayName: 'SvgCamera',
   propTypes: {
     camera: React.PropTypes.shape({
@@ -81,4 +70,13 @@ var SvgCamera = React.createClass({
   }
 });
 
-module.exports = SvgCamera;
+function zoomIsNumberGreaterThanZero(props, propName, componentName) {
+  var value = props[propName];
+
+  if (typeof value != 'number' || value <= 0) {
+    return new Error(
+      'Invalid prop `camera.zoom` supplied to `' + componentName +
+      '`, expected `number greater than 0` but was `' + value + '`'
+    );
+  }
+}
