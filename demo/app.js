@@ -28,14 +28,24 @@ function handleZoomChange(event) {
 function render() {
   var ui = (
     <div>
-      <input type="range" min="0" max="500" step="1" value={camera.x} onChange={handleXChange}/>
-      x: {camera.x}
+      <div>
+        <input type="range" min="0" max="500" step="1" value={camera.x} onChange={handleXChange}/>
+        x: {camera.x}
+      </div>
+      <div>
+        <input type="range" min="0" max="500" step="1" value={camera.y} onChange={handleYChange}/>
+        y: {camera.y}
+      </div>
+      <div>
+        <input type="range" min="0.1" max="10" step="0.1" value={camera.zoom} onChange={handleZoomChange}/>
+        zoom: {camera.zoom}
+      </div>
 
-      <input type="range" min="0" max="500" step="1" value={camera.y} onChange={handleYChange}/>
-      y: {camera.y}
+      <b>camera prop</b>
+      <pre>{JSON.stringify(camera, null, 2)}</pre>
 
-      <input type="range" min="0.1" max="5" step="0.1" value={camera.zoom} onChange={handleZoomChange}/>
-      zoom: {camera.zoom}
+      <b>svg</b>
+      <pre>&lt;svg viewBox="<span id="viewbox-value" />"&gt;</pre>
 
       <SvgCamera camera={camera}>
         <circle cx="200" cy="200" r="20" fill="red"/>
@@ -45,7 +55,9 @@ function render() {
     </div>
   );
 
-  ReactDOM.render(ui, main);
+  ReactDOM.render(ui, main, function() {
+    document.querySelector('#viewbox-value').innerText = document.querySelector('svg').getAttribute('viewBox');
+  });
 }
 
 render();

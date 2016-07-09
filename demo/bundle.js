@@ -75,15 +75,49 @@
 	  var ui = React.createElement(
 	    'div',
 	    null,
-	    React.createElement('input', { type: 'range', min: '0', max: '500', step: '1', value: camera.x, onChange: handleXChange }),
-	    'x: ',
-	    camera.x,
-	    React.createElement('input', { type: 'range', min: '0', max: '500', step: '1', value: camera.y, onChange: handleYChange }),
-	    'y: ',
-	    camera.y,
-	    React.createElement('input', { type: 'range', min: '0.1', max: '5', step: '0.1', value: camera.zoom, onChange: handleZoomChange }),
-	    'zoom: ',
-	    camera.zoom,
+	    React.createElement(
+	      'div',
+	      null,
+	      React.createElement('input', { type: 'range', min: '0', max: '500', step: '1', value: camera.x, onChange: handleXChange }),
+	      'x: ',
+	      camera.x
+	    ),
+	    React.createElement(
+	      'div',
+	      null,
+	      React.createElement('input', { type: 'range', min: '0', max: '500', step: '1', value: camera.y, onChange: handleYChange }),
+	      'y: ',
+	      camera.y
+	    ),
+	    React.createElement(
+	      'div',
+	      null,
+	      React.createElement('input', { type: 'range', min: '0.1', max: '10', step: '0.1', value: camera.zoom, onChange: handleZoomChange }),
+	      'zoom: ',
+	      camera.zoom
+	    ),
+	    React.createElement(
+	      'b',
+	      null,
+	      'camera prop'
+	    ),
+	    React.createElement(
+	      'pre',
+	      null,
+	      JSON.stringify(camera, null, 2)
+	    ),
+	    React.createElement(
+	      'b',
+	      null,
+	      'svg'
+	    ),
+	    React.createElement(
+	      'pre',
+	      null,
+	      '<svg viewBox="',
+	      React.createElement('span', { id: 'viewbox-value' }),
+	      '">'
+	    ),
 	    React.createElement(
 	      SvgCamera,
 	      { camera: camera },
@@ -93,7 +127,9 @@
 	    )
 	  );
 
-	  ReactDOM.render(ui, main);
+	  ReactDOM.render(ui, main, function () {
+	    document.querySelector('#viewbox-value').innerText = document.querySelector('svg').getAttribute('viewBox');
+	  });
 	}
 
 	render();
