@@ -23,7 +23,7 @@ ReactDOM.render(
 );
 ```
 
-`<SvgCamera>` becomes `<svg>` so children to `SvgCamera` can be any valid `svg`
+`<SvgCamera>` renders `<svg>` so children of `SvgCamera` can be any valid `svg`
 children.
 
 ### props
