@@ -20442,7 +20442,7 @@
 	      x: React.PropTypes.number.isRequired,
 	      y: React.PropTypes.number.isRequired,
 	      zoom: zoomIsNumberGreaterThanZero
-	    })
+	    }).isRequired
 	  },
 	  componentWillMount: function componentWillMount() {
 	    if (!this.knowsSize()) {
