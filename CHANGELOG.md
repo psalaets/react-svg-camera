@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2016-07-09
+
+### Fixed
+
+- `camera` prop is now marked as a required prop
+
 ## [1.1.0] - 2016-06-26
 
 ### Added
