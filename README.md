@@ -17,14 +17,13 @@ var SvgCamera = require('react-svg-camera');
 
 ReactDOM.render(
   <SvgCamera camera={camera}>
-    {/* svg children here */}
+    {/* children here */}
   </SvgCamera>,
   container
 );
 ```
 
-`<SvgCamera>` renders `<svg>` so children of `SvgCamera` can be any valid `svg`
-children.
+`<SvgCamera>` renders `<svg>`
 
 ### props
 
